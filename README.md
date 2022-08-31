@@ -1,5 +1,7 @@
 <h1>Blog(Mern stack Application)</h1>
 <h1>This app is build with MongoDb,express.js,React.js,Node.js</h1>
+
+<p>In This App,user can view the blogs,delete the blog,update the blog and he/she can also leave the review with their name</p>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
