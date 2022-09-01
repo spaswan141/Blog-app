@@ -1,12 +1,10 @@
-require("dotenv").config();
-const express = require("express");
-
+require("dotenv").config()
+const express=require('express')
+const cors=require('cors')
 const connection = require("./db");
-const blogRouter=require('./routes/blog')
-const reviewRouter=require('./routes/review')
-var cors = require('cors')
-const app = express();
-
+const blogRouter=require('./routers/blog.router')
+const reviewRouter=require('./routers/review.router')
+const app = express()
 connection();
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
@@ -18,12 +16,17 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods",'GET,PUT,DELETE,POST');
     next();
 });
+
 app.use("/",blogRouter);
 app.use('/',reviewRouter)
+app.use("/",(req, res, next) =>{
+res.send("done")
+})
+const Port = process.env.Port || 8080;
+app.listen(Port, () => {
+  console.log(`listening on port http://localhost:${Port}`);
+});
 
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 
 
